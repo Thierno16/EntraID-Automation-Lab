@@ -1,0 +1,5 @@
+FirstName,LastName,DisplayName,UserPrincipalName,MailNickname,Department,JobTitle,OfficeLocation,UsageLocation,EmployeeId
+John,Smith,John Smith,john.smith@SoulbyLTD.onmicrosoft.com,john.smith,Security,Cyber Security Analyst,Zurich,CH,EMP001
+Sarah,Brown,Sarah Brown,sarah.brown@SoulbyLTD.onmicrosoft.com,sarah.brown,Security,SOC Analyst,Bern,CH,EMP002
+Mike,Williams,Mike Williams,mike.williams@SoulbyLTD.onmicrosoft.com,mike.williams,IT,System Administrator,Geneva,CH,EMP003
+Anna,Taylor,Anna Taylor,anna.taylor@SoulbyLTD.onmicrosoft.com,anna.taylor,Finance,Financial Analyst,Lausanne,CH,EMP004

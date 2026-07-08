@@ -1,3 +1,24 @@
+<#
+.SYNOPSIS
+Creates a secure random password.
+
+.DESCRIPTION
+Generates a random password that meets enterprise complexity requirements.
+
+.PARAMETER Length
+Length of the generated password.
+
+.EXAMPLE
+New-RandomPassword
+
+.EXAMPLE
+New-RandomPassword -Length 20
+
+.NOTES
+Author: Thierno Bah
+Version: 1.0
+#>
+
 function New-RandomPassword {
 
     [CmdletBinding()]

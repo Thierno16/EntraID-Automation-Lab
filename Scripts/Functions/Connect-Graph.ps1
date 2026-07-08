@@ -1,3 +1,21 @@
+<#
+.SYNOPSIS
+Connects to Microsoft Graph.
+
+.DESCRIPTION
+Creates a Microsoft Graph session using delegated authentication.
+If a session already exists, it reuses the existing connection.
+
+.EXAMPLE
+Connect-Graph
+
+.NOTES
+Author  : Thierno Bah
+Version : 1.0
+#>
+
+function Connect-Graph {
+
 function Connect-Graph {
 
     [CmdletBinding()]

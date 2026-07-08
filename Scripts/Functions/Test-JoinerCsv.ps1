@@ -1,3 +1,24 @@
+<#
+.SYNOPSIS
+Validates the onboarding CSV file.
+
+.DESCRIPTION
+Checks whether the CSV exists, contains users,
+and has no duplicate Employee IDs or UserPrincipalNames.
+
+.PARAMETER CsvPath
+Path to the onboarding CSV file.
+
+.EXAMPLE
+Test-JoinerCsv -CsvPath ".\Data\Joiners.csv"
+
+.NOTES
+Author  : Thierno Bah
+Version : 1.0
+#>
+
+function Test-JoinerCsv {
+
 function Test-JoinerCsv {
 
     [CmdletBinding()]

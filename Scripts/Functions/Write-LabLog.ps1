@@ -1,3 +1,26 @@
+<#
+.SYNOPSIS
+Writes a formatted message to the console and log file.
+
+.DESCRIPTION
+Creates standardized log entries with timestamps and log levels.
+
+.PARAMETER Message
+The message to write.
+
+.PARAMETER Level
+The log level (INFO, WARNING, ERROR, SUCCESS).
+
+.EXAMPLE
+Write-LabLog -Message "Connecting to Microsoft Graph"
+
+.NOTES
+Author  : Thierno Bah
+Version : 1.0
+#>
+
+function Write-LabLog {
+
 function Write-LabLog {
 
     [CmdletBinding()]

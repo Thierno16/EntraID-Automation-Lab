@@ -28,10 +28,18 @@ Connect-Graph
 
 $Users = Test-JoinerCsv -CsvPath $CsvPath
 
+$Results = @()
+
 foreach ($User in $Users)
 {
-    New-EntraUser -User $User
+    $Results += New-EntraUser `
+        -User $User `
+        -Statistics $Statistics
 }
+
+$Results | Export-Csv `
+    -Path ".\Reports\Day1_Onboarding_Report.csv" `
+    -NoTypeInformation
 
 Write-LabLog -Message "Onboarding Completed" -Level SUCCESS
 

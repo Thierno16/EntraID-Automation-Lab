@@ -21,8 +21,6 @@ Version : 1.0
 
 function Write-LabLog {
 
-function Write-LabLog {
-
     [CmdletBinding()]
     param(
 

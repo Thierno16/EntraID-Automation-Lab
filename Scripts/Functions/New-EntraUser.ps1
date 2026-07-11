@@ -1,38 +1,54 @@
+<#
+.SYNOPSIS
+Creates a new Microsoft Entra ID user.
+
+.DESCRIPTION
+Creates a Microsoft Entra ID user using Microsoft Graph.
+
+.PARAMETER User
+User object imported from the onboarding CSV.
+
+.OUTPUTS
+Microsoft.Graph.PowerShell.Models.IMicrosoftGraphUser
+
+.EXAMPLE
+New-EntraUser -User $User
+#>
+
 function New-EntraUser {
 
     [CmdletBinding()]
     param(
-        [Parameter(Mandatory)]
-        [pscustomobject]$User
-    )
 
-    Write-LabLog -Message "Processing $($User.DisplayName)..."
+        [Parameter(Mandatory)]
+        [PSCustomObject]$User
+
+    )
 
     try {
 
-        # Check whether the user already exists
-        $ExistingUser = Get-MgUser `
-            -Filter "userPrincipalName eq '$($User.UserPrincipalName)'" `
-            -ErrorAction SilentlyContinue
+        #-------------------------------------------------
+        # Generate a temporary password
+        #-------------------------------------------------
 
-        if ($ExistingUser) {
+        $Password = "Temp!" + (Get-Random -Minimum 100000 -Maximum 999999) + "!"
 
-            Write-LabLog `
-                -Message "$($User.UserPrincipalName) already exists. Skipping." `
-                -Level WARNING
-
-            return
-        }
-
-        # Build password profile
         $PasswordProfile = @{
-            Password = $DefaultPassword
+            Password = $Password
             ForceChangePasswordNextSignIn = $true
+            ForceChangePasswordNextSignInWithMfa = $false
         }
 
-        # Create the user
-        New-MgUser `
-            -AccountEnabled `
+        #-------------------------------------------------
+        # Create the Entra ID user
+        #-------------------------------------------------
+ 
+        Write-LabLog `
+            -Message "Creating user $($User.DisplayName)" `
+            -Level INFO
+
+        $NewUser = New-MgUser `
+            -AccountEnabled $true `
             -DisplayName $User.DisplayName `
             -GivenName $User.FirstName `
             -Surname $User.LastName `
@@ -46,15 +62,21 @@ function New-EntraUser {
             -PasswordProfile $PasswordProfile
 
         Write-LabLog `
-            -Message "$($User.DisplayName) created successfully." `
+            -Message "Created user $($User.UserPrincipalName)" `
             -Level SUCCESS
+
+        return @{
+            User = $NewUser
+            Password = $Password
+        }
 
     }
     catch {
 
         Write-LabLog `
-            -Message "Failed to create $($User.DisplayName): $($_.Exception.Message)" `
-            -Level ERROR
+    -Message "Failed to create user $($User.UserPrincipalName). Error: $($_.Exception.Message)" `
+    -Level ERROR
+        throw
 
     }
 

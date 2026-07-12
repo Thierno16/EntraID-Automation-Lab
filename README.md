@@ -148,3 +148,11 @@ Completed Projects
 - User Offboarding
 - Access Review Reporting
 - Azure Automation Integration
+
+---
+
+# Roadmap
+
+See the project roadmap for upcoming releases and planned enhancements.
+
+📄 [ROADMAP.md](ROADMAP.md)

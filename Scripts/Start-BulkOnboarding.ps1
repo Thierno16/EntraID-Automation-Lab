@@ -4,12 +4,12 @@ Bulk onboarding users into Microsoft Entra ID.
 
 .DESCRIPTION
 Reads users from a CSV file, validates the data,
-creates missing users, generates logs and exports
-a provisioning report.
+creates missing users, assigns department security groups,
+and exports a provisioning report.
 
 .NOTES
 Author  : Thierno Bah
-Version : 1.1
+Version : 1.2
 #>
 
 [CmdletBinding()]
@@ -63,47 +63,77 @@ foreach ($User in $Users)
         -Message "Processing $($User.UserPrincipalName)..." `
         -Level INFO
 
-    if (Test-EntraUserExists -UserPrincipalName $User.UserPrincipalName)
+    try
     {
 
-        Write-LabLog `
-            -Message "$($User.UserPrincipalName) already exists." `
-            -Level WARNING
+        #---------------------------------------------
+        # User Provisioning
+        #---------------------------------------------
 
-        $Results += Add-ProvisioningResult `
-            -DisplayName $User.DisplayName `
-            -UserPrincipalName $User.UserPrincipalName `
-            -Status Exists `
-            -Message "User already exists."
+        if (Test-EntraUserExists -UserPrincipalName $User.UserPrincipalName)
+        {
 
-    }
-    else
-    {
+            Write-LabLog `
+                -Message "$($User.UserPrincipalName) already exists." `
+                -Level WARNING
 
-        try
+            $GraphUser = Get-MgUser `
+                -UserId $User.UserPrincipalName
+
+            $UserStatus = "Exists"
+            $Password   = ""
+
+        }
+        else
         {
 
             $NewUser = New-EntraUser `
                 -User $User
 
-            $Results += Add-ProvisioningResult `
-                -DisplayName $User.DisplayName `
-                -UserPrincipalName $User.UserPrincipalName `
-                -Status Created `
-                -Password $NewUser.Password `
-                -Message "User created successfully."
+            $GraphUser = Get-MgUser `
+                -UserId $User.UserPrincipalName
+
+            $UserStatus = "Created"
+            $Password   = $NewUser.Password
 
         }
-        catch
-        {
 
-            $Results += Add-ProvisioningResult `
-                -DisplayName $User.DisplayName `
-                -UserPrincipalName $User.UserPrincipalName `
-                -Status Failed `
-                -Message $_.Exception.Message
+        #---------------------------------------------
+        # Department Group Automation
+        #---------------------------------------------
 
-        }
+        $Group = Get-OrCreateGroup `
+            -Department $User.Department
+
+        $GroupStatus = Add-UserToDepartment `
+            -User $GraphUser `
+            -Group $Group
+
+        #---------------------------------------------
+        # Store Provisioning Result
+        #---------------------------------------------
+
+        $Results += Add-ProvisioningResult `
+            -DisplayName $User.DisplayName `
+            -UserPrincipalName $User.UserPrincipalName `
+            -Status $UserStatus `
+            -GroupName $Group.DisplayName `
+            -GroupStatus $GroupStatus `
+            -Password $Password `
+            -Message "User processed successfully."
+
+    }
+    catch
+    {
+
+        $Results += Add-ProvisioningResult `
+            -DisplayName $User.DisplayName `
+            -UserPrincipalName $User.UserPrincipalName `
+            -Status "Failed" `
+            -GroupName "" `
+            -GroupStatus "" `
+            -Password "" `
+            -Message $_.Exception.Message
 
     }
 
@@ -122,12 +152,7 @@ Write-LabLog `
 #-------------------------------------------------
 
 $ReportPath = Export-ProvisioningReport `
-    -Results $Results `
-    -Path (
-        Join-Path `
-            $PSScriptRoot `
-            "..\Reports\ProvisioningReport_$(Get-Date -Format 'yyyyMMdd_HHmmss').csv"
-    )
+    -Results $Results
 
 #-------------------------------------------------
 # Display Summary
@@ -139,7 +164,7 @@ $Failed   = ($Results | Where-Object Status -eq "Failed").Count
 
 Write-Host ""
 Write-Host "==================================================" -ForegroundColor Cyan
-Write-Host "             BULK ONBOARDING SUMMARY" -ForegroundColor Cyan
+Write-Host "        BULK ONBOARDING SUMMARY" -ForegroundColor Cyan
 Write-Host "==================================================" -ForegroundColor Cyan
 Write-Host ""
 

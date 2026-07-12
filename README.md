@@ -156,3 +156,14 @@ Completed Projects
 See the project roadmap for upcoming releases and planned enhancements.
 
 📄 [ROADMAP.md](ROADMAP.md)
+
+## Project 3 – Department & Security Group Automation
+
+### Features
+
+- Automatic department security group creation
+- Automatic group discovery
+- Automatic group membership assignment
+- Membership validation
+- Enhanced provisioning reports
+- Idempotent access provisioning

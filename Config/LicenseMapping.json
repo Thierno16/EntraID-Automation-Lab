@@ -1,0 +1,14 @@
+{
+    "IT": {
+        "SkuPartNumber": "Office_365_w/o_Teams_Bundle_Business_Premium"
+    },
+    "SECURITY": {
+        "SkuPartNumber": "Office_365_w/o_Teams_Bundle_Business_Premium"
+    },
+    "FINANCE": {
+        "SkuPartNumber": "Office_365_w/o_Teams_Bundle_Business_Premium"
+    },
+    "HR": {
+        "SkuPartNumber": "Office_365_w/o_Teams_Bundle_Business_Premium"
+    }
+}

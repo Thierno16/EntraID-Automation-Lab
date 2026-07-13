@@ -5,11 +5,11 @@ Bulk onboarding users into Microsoft Entra ID.
 .DESCRIPTION
 Reads users from a CSV file, validates the data,
 creates missing users, assigns department security groups,
-and exports a provisioning report.
+assigns Microsoft 365 licenses, and exports a provisioning report.
 
 .NOTES
 Author  : Thierno Bah
-Version : 1.2
+Version : 1.3
 #>
 
 [CmdletBinding()]
@@ -99,7 +99,7 @@ foreach ($User in $Users)
         }
 
         #---------------------------------------------
-        # Department Group Automation
+        # Department Security Group
         #---------------------------------------------
 
         $Group = Get-OrCreateGroup `
@@ -108,6 +108,17 @@ foreach ($User in $Users)
         $GroupStatus = Add-UserToDepartment `
             -User $GraphUser `
             -Group $Group
+
+        #---------------------------------------------
+        # Microsoft 365 License
+        #---------------------------------------------
+
+        $SkuPartNumber = Get-LicenseMapping `
+            -Department $User.Department
+
+        $LicenseStatus = Set-UserLicense `
+            -User $GraphUser `
+            -Department $User.Department
 
         #---------------------------------------------
         # Store Provisioning Result
@@ -119,6 +130,8 @@ foreach ($User in $Users)
             -Status $UserStatus `
             -GroupName $Group.DisplayName `
             -GroupStatus $GroupStatus `
+            -License $SkuPartNumber `
+            -LicenseStatus $LicenseStatus `
             -Password $Password `
             -Message "User processed successfully."
 
@@ -132,6 +145,8 @@ foreach ($User in $Users)
             -Status "Failed" `
             -GroupName "" `
             -GroupStatus "" `
+            -License "" `
+            -LicenseStatus "" `
             -Password "" `
             -Message $_.Exception.Message
 

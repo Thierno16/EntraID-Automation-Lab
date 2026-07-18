@@ -47,8 +47,9 @@ The solution was built following enterprise automation principles:
 
 ---
 
-# Project Architecture
+## Project Architecture
 
+```text
 CSV Joiners
       │
       ▼
@@ -78,25 +79,24 @@ Generate Provisioning Report
              │
              ▼
 Execution Summary
-
+```
 ---
 
-# Folder Structure
+## Folder Structure
 
 ```text
 EntraID-Automation-Lab
-
-Config/
-Data/
-Docs/
-Functions/
-Logs/
-Reports/
-Scripts/
-
-README.md
+│
+├── Config
+├── Data
+├── Docs
+├── Functions
+├── Logs
+├── Reports
+├── Scripts
+├── README.md
+└── ROADMAP.md
 ```
-
 ---
 
 # Demonstration
@@ -208,11 +208,3 @@ See the project roadmap for upcoming releases and planned enhancements.
 📄 [ROADMAP.md](ROADMAP.md)
 
 
-### Features
-
-- Automatic department security group creation
-- Automatic group discovery
-- Automatic group membership assignment
-- Membership validation
-- Enhanced provisioning reports
-- Idempotent access provisioning

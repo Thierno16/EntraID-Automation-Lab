@@ -43,13 +43,13 @@ Completed:
 
 ---
 
-# In Progress
+# Completed
 
 ## 🔄 Version 1.2.0
 
 ### Department & Security Group Automation
 
-Planned features:
+Features
 
 - Department group validation
 - Automatic group creation
@@ -59,7 +59,7 @@ Planned features:
 
 ---
 
-# Planned
+# Completed
 
 ## Version 1.3.0
 

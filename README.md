@@ -4,16 +4,18 @@ Enterprise identity lifecycle automation using **PowerShell 7** and the **Micros
 
 ![PowerShell](https://img.shields.io/badge/PowerShell-7-blue)
 ![Microsoft Graph](https://img.shields.io/badge/Microsoft-Graph-green)
-![Version](https://img.shields.io/badge/version-v1.1.0-success)
+![Version](https://img.shields.io/badge/version-v1.3.0-success)
 ![Platform](https://img.shields.io/badge/Platform-Microsoft%20Entra%20ID-0078D4)
 
 ---
 
 # Overview
 
-This repository demonstrates a modular Microsoft Entra ID automation framework developed with PowerShell and Microsoft Graph.
+This repository demonstrates a modular Microsoft Entra ID identity lifecycle automation framework built with PowerShell 7 and the Microsoft Graph PowerShell SDK.
 
-The project automates the onboarding process by validating CSV data, checking for existing users, creating new accounts, logging every operation, and exporting a provisioning report.
+The solution automates enterprise onboarding by validating CSV data, provisioning users, creating department security groups, assigning Microsoft 365 licenses, generating provisioning reports, and logging every operation.
+
+The project follows enterprise automation best practices including reusable functions, structured logging, robust error handling, configuration-driven design, and Git-based versioning..
 
 The solution was built following enterprise automation principles:
 

@@ -132,6 +132,21 @@ Users successfully provisioned into Microsoft Entra ID using Microsoft Graph.
 CSV report generated after execution summarizing provisioning results.
 
 ---
+## Department Group Automation
+
+![Department Group Automation](Docs/Images/Test-GroupAutomation.PNG)
+
+Automatically creates department security groups and assigns users to the appropriate department group.
+
+---
+
+## Microsoft 365 License Automation
+
+![Microsoft 365 License Automation](Docs/Images/Test-LicenseAutomation.PNG)
+
+Automatically validates license availability and assigns Microsoft 365 licenses using Microsoft Graph.
+
+---
 
 # Technologies
 

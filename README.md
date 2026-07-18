@@ -30,20 +30,25 @@ The solution was built following enterprise automation principles:
 
 # Features
 
+
 - Microsoft Graph authentication
 - CSV validation
 - Bulk user onboarding
 - Duplicate user detection
 - Automatic password generation
+- Department security group automation
+- Automatic group membership assignment
+- Microsoft 365 license mapping
+- License availability validation
+- Automatic Microsoft 365 license assignment
 - Structured logging
 - Provisioning report export
-- Reusable PowerShell toolkit
+- Modular PowerShell toolkit
 
 ---
 
 # Project Architecture
 
-```text
 CSV Joiners
       │
       ▼
@@ -61,8 +66,16 @@ Check Existing User
 Already Exists     Create User
       │               │
       └──────┬────────┘
+             │
+             ▼
+Department Group Automation
+             │
+             ▼
+Microsoft 365 License Assignment
+             │
              ▼
 Generate Provisioning Report
+             │
              ▼
 Execution Summary
 ```
@@ -130,27 +143,63 @@ CSV report generated after execution summarizing provisioning results.
 - GitHub
 
 ---
+## Department Group Automation
 
-# Current Version
+![Department Groups](Docs/Images/DepartmentGroups.png)
 
-**v1.1.0**
+Automatically creates department security groups and assigns users to the appropriate group.
 
-Completed Projects
+---
 
-- Project 1 — Entra ID User Provisioning Framework
-- Project 2 — Bulk User Onboarding Automation
+## Microsoft 365 License Automation
+
+![License Assignment](Docs/Images/LicenseAutomation.png)
+
+Automatically maps departments to Microsoft 365 licenses, validates license availability, and assigns licenses using Microsoft Graph.
+---
+# Current Portfolio
+
+| Project | Status | Version |
+|---------|:------:|:------:|
+| Project 1 – Identity Provisioning | ✅ | v1.0.0 |
+| Project 2 – Bulk User Onboarding | ✅ | v1.1.0 |
+| Project 3 – Department & Security Group Automation | ✅ | v1.2.0 |
+| Project 4 – Microsoft 365 License Automation | ✅ | v1.3.0 |
 
 ---
 
 # Upcoming Work
 
-- Department Group Automation
-- Security Group Assignment
-- Microsoft 365 License Assignment
-- User Offboarding
+- User Offboarding Automation
+- Session Revocation
+- License Removal
+- Group Cleanup
+- Azure Automation Runbooks
 - Access Review Reporting
-- Azure Automation Integration
+- Azure Key Vault Integration
 
+---
+# Skills Demonstrated
+
+- Microsoft Entra ID
+- Microsoft Graph PowerShell SDK
+- Identity Lifecycle Management
+- Microsoft 365 License Management
+- RBAC & Security Groups
+- PowerShell 7 Automation
+- JSON Configuration
+- CSV Data Processing
+- Git & GitHub
+- Modular PowerShell Design
+  
+---
+# Releases
+
+- v1.0.0 – Identity Provisioning
+- v1.1.0 – Bulk User Onboarding
+- v1.2.0 – Department & Security Group Automation
+- v1.3.0 – Microsoft 365 License Automation
+  
 ---
 
 # Roadmap
@@ -159,7 +208,6 @@ See the project roadmap for upcoming releases and planned enhancements.
 
 📄 [ROADMAP.md](ROADMAP.md)
 
-## Project 3 – Department & Security Group Automation
 
 ### Features
 

@@ -149,7 +149,7 @@ Features:
 - Git
 - GitHub
 - CSV Automation
-
+- JSON Configuration
 ---
 
 # Project Status

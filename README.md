@@ -78,7 +78,6 @@ Generate Provisioning Report
              │
              ▼
 Execution Summary
-```
 
 ---
 

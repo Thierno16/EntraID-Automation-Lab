@@ -155,6 +155,8 @@ Automatically validates license availability and assigns Microsoft 365 licenses 
 - Microsoft Entra ID
 - Git
 - GitHub
+- CSV Automation
+- JSON Configuration
 
 ---
 ## Department Group Automation

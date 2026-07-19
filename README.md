@@ -10,6 +10,25 @@ Enterprise Identity Lifecycle Automation using **PowerShell 7** and the **Micros
 
 ---
 
+## 📑 Table of Contents
+
+- [Overview](#overview)
+- [Repository Objectives](#repository-objectives)
+- [Features](#features)
+- [Project Architecture](#project-architecture)
+- [Folder Structure](#folder-structure)
+- [Demonstration](#demonstration)
+- [Technologies](#technologies)
+- [Current Portfolio](#current-portfolio)
+- [Skills Demonstrated](#skills-demonstrated)
+- [Releases](#releases)
+- [Roadmap](#roadmap)
+- [About the Author](#about-the-author)
+- [Repository Status](#repository-status)
+- [License](#license)
+
+---
+
 # Overview
 
 This repository demonstrates a modular **Microsoft Entra ID Identity Lifecycle Automation Framework** built with **PowerShell 7** and the **Microsoft Graph PowerShell SDK**.
@@ -110,7 +129,7 @@ This repository was created to:
 # Folder Structure
 
 ```text
-EntraID-Automation-Lab
+EntraID-Lab
 │
 ├── Config
 ├── Data
@@ -144,7 +163,7 @@ Successfully establishes a delegated Microsoft Graph session before automation b
 
 ![Bulk Onboarding](Docs/Images/BulkOnboarding.png)
 
-Processes the onboarding CSV, validates input, checks existing accounts, creates users, assigns groups and licenses, and generates a provisioning report.
+Processes the onboarding CSV, validates input, checks existing accounts, creates users, assigns department groups, assigns Microsoft 365 licenses, and generates a provisioning report.
 
 ---
 
@@ -163,36 +182,10 @@ Users successfully provisioned into Microsoft Entra ID using Microsoft Graph.
 CSV report generated after onboarding summarizing provisioning results.
 
 ---
+
 ## Department Group Automation
 
-![Department Group Automation](Docs/Images/Test-GroupAutomation.PNG)
-
-Automatically creates department security groups and assigns users to the appropriate department group.
-
----
-
-## Microsoft 365 License Automation
-
-![Microsoft 365 License Automation](Docs/Images/Test-LicenseAutomation.PNG)
-
-Automatically validates license availability and assigns Microsoft 365 licenses using Microsoft Graph.
-
----
-
-# Technologies
-
-- PowerShell 7
-- Microsoft Graph PowerShell SDK
-- Microsoft Entra ID
-- Git
-- GitHub
-- CSV Automation
-- JSON Configuration
-
----
-## Department Group Automation
-
-![Department Groups](Docs/Images/DepartmentGroups.png)
+![Department Groups](Docs/Images/Project3-GroupAutomation.png)
 
 Automatically creates department security groups and assigns users to the appropriate groups.
 
@@ -200,39 +193,33 @@ Automatically creates department security groups and assigns users to the approp
 
 ## Microsoft 365 License Automation
 
-![License Assignment](Docs/Images/LicenseAutomation.png)
+![License Assignment](Docs/Images/Project4-LicenseAutomation.png)
 
 Automatically maps departments to Microsoft 365 licenses, validates license availability, and assigns licenses using Microsoft Graph.
 
 ---
 
-## User Offboarding *(Project 5)*
+## User Offboarding (Project 5)
 
-> *(Replace with your screenshot once available.)*
+![Single User Offboarding](Docs/Images/Project5-SingleOffboarding.png)
 
-```text
-Single User Offboarding
-```
+Disables Microsoft Entra ID user accounts, removes Microsoft 365 licenses and security group memberships, revokes active sessions, and records the operation in an audit report.
 
 ---
 
-## Bulk User Offboarding *(Project 5)*
+## Bulk User Offboarding (Project 5)
 
-> *(Replace with your screenshot once available.)*
+![Bulk User Offboarding](Docs/Images/Project5-BulkOffboarding.png)
 
-```text
-Bulk Offboarding
-```
+Processes multiple users from a CSV file and performs a complete offboarding workflow for each account.
 
 ---
 
-## Offboarding Report *(Project 5)*
+## Offboarding Report (Project 5)
 
-> *(Replace with your screenshot once available.)*
+![Offboarding Report](Docs/Images/Project5-OffboardingReport.png)
 
-```text
-CSV Offboarding Report
-```
+Consolidated CSV report generated after bulk offboarding, providing an audit trail of all completed actions.
 
 ---
 
@@ -242,6 +229,7 @@ CSV Offboarding Report
 - Microsoft Graph PowerShell SDK
 - Microsoft Entra ID
 - Microsoft 365
+- REST APIs
 - JSON Configuration
 - CSV Processing
 - Git
@@ -275,7 +263,9 @@ CSV Offboarding Report
 ## PowerShell Development
 
 - Advanced PowerShell Functions
+- PowerShell Modules
 - Modular Script Design
+- Pipeline Processing
 - Error Handling
 - Logging
 - CSV Processing
@@ -306,7 +296,7 @@ CSV Offboarding Report
 | v1.1.0 | Bulk User Onboarding |
 | v1.2.0 | Department & Security Group Automation |
 | v1.3.0 | Microsoft 365 License Automation |
-| v1.4.0 | User Offboarding Automation |
+| **v1.4.0** | **User Offboarding Automation** |
 
 ---
 
@@ -316,7 +306,7 @@ CSV Offboarding Report
 
 - ✅ Identity Provisioning
 - ✅ Bulk User Onboarding
-- ✅ Department Group Automation
+- ✅ Department & Security Group Automation
 - ✅ Microsoft 365 License Automation
 - ✅ User Offboarding Automation
 
@@ -338,18 +328,30 @@ For more details, see:
 
 **Thierno Bah**
 
-IT Engineer specializing in Microsoft Entra ID, Identity & Access Management (IAM), PowerShell automation, Microsoft 365 administration, and cybersecurity.
+IT Engineer specializing in Microsoft Entra ID, Identity & Access Management (IAM), PowerShell Automation, Microsoft 365 Administration, and Cybersecurity.
 
 ### Connect with me
 
 - GitHub: https://github.com/Thierno16
-- LinkedIn:https://www.linkedin.com/in/thierno-bah-95931259/
+- LinkedIn: https://www.linkedin.com/in/thierno-bah-95931259/
 
 ---
 
 # Repository Status
 
-This repository is actively maintained and expanded through practical Microsoft Entra ID automation projects designed to demonstrate real-world administration, scripting, and identity lifecycle management techniques.
+🚀 This repository is actively maintained and continuously expanded through practical Microsoft Entra ID automation projects designed to demonstrate real-world identity lifecycle management, scripting, and enterprise automation techniques.
 
-⭐ If you find this repository useful, consider starring it and following its progress.
+**Current Release:** **v1.4.0**
 
+**Current Focus**
+
+- Microsoft Entra ID
+- Identity Lifecycle Automation
+- Microsoft Graph PowerShell
+- Enterprise PowerShell Development
+
+---
+
+# License
+
+This project is licensed under the MIT License.

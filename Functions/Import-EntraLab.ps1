@@ -23,6 +23,8 @@ ForEach-Object {
 }
 
 Write-Host ""
-Write-Host "==========================================" -ForegroundColor Green
-Write-Host " Entra ID Lab Functions Loaded" -ForegroundColor Green
-Write-Host "==========================================" -ForegroundColor Green
+Write-Host "===================================================" -ForegroundColor Green
+Write-Host " Microsoft Entra ID Automation Lab" -ForegroundColor Cyan
+Write-Host " Functions successfully imported." -ForegroundColor Green
+Write-Host " Ready for execution." -ForegroundColor Green
+Write-Host "===================================================" -ForegroundColor Green
